@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+
 import "maplibre-gl/dist/maplibre-gl.css";
 
 function MyApp({ Component, pageProps }: AppProps) {

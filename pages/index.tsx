@@ -1,7 +1,6 @@
 import type { NextPage } from "next";
-import maplibregl from "maplibre-gl";
-import React, { useRef } from "react";
-import ReactMapGL, { Layer, MapRef, Marker, Source } from "react-map-gl";
+import { useRef } from "react";
+import Map, { Layer, MapRef, Marker, Source } from "react-map-gl/maplibre";
 
 const locations = [
   {
@@ -31,24 +30,21 @@ const IndexPage: NextPage = () => {
   };
 
   return (
-    <ReactMapGL
+    <Map
       ref={mapRef}
-      mapLib={maplibregl}
       maxBounds={[103.596, 1.1443, 104.1, 1.4835]}
       mapStyle={{
-        // https://maps-json.onemap.sg/Grey.json
+        // adapted from https://www.onemap.gov.sg/maps/json/raster/tilejson/2.2.0/Grey.json
         version: 8,
         name: "Grey",
         sources: {
           Grey: {
             type: "raster",
+            scheme: "xyz",
             tiles: [
-              "https://maps-a.onemap.sg/v3/Grey_HD/{z}/{x}/{y}.png?fresh=true",
-              "https://maps-b.onemap.sg/v3/Grey_HD/{z}/{x}/{y}.png?fresh=true",
-              "https://maps-c.onemap.sg/v3/Grey_HD/{z}/{x}/{y}.png?fresh=true",
+              "https://www.onemap.gov.sg/maps/tiles/Grey_HD/{z}/{x}/{y}.png",
             ],
-            tileSize: 128,
-            bounds: [103.596, 1.1443, 104.4309, 1.4835],
+            bounds: [103.502, 1.16, 104.11475, 1.56073],
           },
         },
         layers: [
@@ -115,7 +111,7 @@ const IndexPage: NextPage = () => {
           </div>
         </Marker>
       ))}
-    </ReactMapGL>
+    </Map>
   );
 };
 
