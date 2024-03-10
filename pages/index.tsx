@@ -33,28 +33,7 @@ const IndexPage: NextPage = () => {
     <Map
       ref={mapRef}
       maxBounds={[103.596, 1.1443, 104.1, 1.4835]}
-      mapStyle={{
-        // adapted from https://www.onemap.gov.sg/maps/json/raster/tilejson/2.2.0/Grey.json
-        version: 8,
-        name: "Grey",
-        sources: {
-          Grey: {
-            type: "raster",
-            scheme: "xyz",
-            tiles: [
-              "https://www.onemap.gov.sg/maps/tiles/Grey_HD/{z}/{x}/{y}.png",
-            ],
-            bounds: [103.502, 1.16, 104.11475, 1.56073],
-          },
-        },
-        layers: [
-          {
-            id: "Grey",
-            type: "raster",
-            source: "Grey",
-          },
-        ],
-      }}
+      mapStyle="https://www.onemap.gov.sg/maps/json/raster/mbstyle/Grey.json"
       style={{
         width: "100vw",
         height: "100vh",
